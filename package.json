@@ -5,15 +5,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "npm run build && next export",
     "lint": "next lint"
   },
   "dependencies": {
     "next": "12.0.9",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.49.0"
   },
   "devDependencies": {
     "eslint": "8.8.0",
-    "eslint-config-next": "12.0.9"
+    "eslint-config-next": "12.0.9",
+    "frontmatter-markdown-loader": "^3.6.3"
   }
 }
