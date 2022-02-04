@@ -1,3 +1,10 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
+
+.footer {
+  position: relative;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
