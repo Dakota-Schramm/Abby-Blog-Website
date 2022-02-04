@@ -1,26 +1,34 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { attributes, react as HomeContent } from "../content/home.md";
+import Layout from "../components/Layout";
+// import { attributes, react as HomeContent } from "../content/home.md";
 
-export default function Home() {
-  let { title, cats } = attributes;
+export default function Home({ title, description, ...props }) {
+  // let { title, cats } = attributes;
+  const scripts = [
+    "https://identity.netlify.com/v1/netlify-identity-widget.js",
+  ];
   return (
     <>
-      <Head>
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-      </Head>
-      <article>
-        <h1>{title}</h1>
-        <HomeContent />
-        <ul>
-          {cats.map((cat, k) => (
-            <li key={k}>
-              <h2>{cat.name}</h2>
-              <p>{cat.description}</p>
-            </li>
-          ))}
-        </ul>
-      </article>
+      <Layout
+        scripts={scripts}
+        pageTitle={`${title} | About`}
+        pageDescription={description}
+      >
+        <div className="home-layout">
+          <div className="biography">{/* Put biography here */}</div>
+          <div className="headshot">{/* put headshot here*/}</div>
+        </div>
+      </Layout>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const configData = await import(`../../siteconfig.json`);
+
+  return {
+    props: {
+      title: configData.default.title,
+      description: configData.default.description,
+    },
+  };
 }
