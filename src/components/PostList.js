@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export default function PostList({ posts }) {
-  if (posts === 'undefined') return null
+  if (posts === "undefined") return null;
 
   return (
     <div>
@@ -11,13 +11,13 @@ export default function PostList({ posts }) {
           posts.map((post) => {
             return (
               <li key={post.slug}>
-                <Link href={% raw %}{{ pathname: `/post/${post.slug}` }}{% endraw %}>
+                <Link href={`/posts/${encodeURIComponent(post.slug)}`}>
                   <a>{post.frontmatter.title}</a>
                 </Link>
               </li>
-            )
+            );
           })}
       </ul>
     </div>
-  )
+  );
 }

@@ -7,33 +7,30 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
 
   return (
     <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
-      <Link href="/">
+      <Link href="/posts/">
         <a>Back to post list</a>
       </Link>
       <article>
         <h1>{frontmatter.title}</h1>
-        <p>By {frontmatter.author}</p>
-        <div>
-          <ReactMarkdown source={markdownBody} />
-        </div>
+        <div dangerouslySetInnerHTML={{ __html: markdownBody }}></div>
       </article>
     </Layout>
   );
 }
 
-export async function getStaticProps({ ...ctx }) {
+export async function getStaticProps(ctx) {
   const { post_slug } = ctx.params;
 
   const config = await import("../../../siteconfig.json");
-  const { attributes, react } = await import(
-    `../../public/content/${post_slug}.md`
+  const { attributes, html } = await import(
+    `../../../public/blog-posts/${post_slug}.md`
   );
 
   return {
     props: {
       siteTitle: config.title,
       frontmatter: attributes,
-      markdownBody: react,
+      markdownBody: html,
     },
   };
 }
@@ -41,15 +38,26 @@ export async function getStaticProps({ ...ctx }) {
 export async function getStaticPaths() {
   const blogSlugs = ((context) => {
     const keys = context.keys();
-    const data = keys.map((key, index) => {
-      let slug = key.replace(/^.*[\\\/]/, "").slice(0, -3);
+    const values = keys.map(context);
 
-      return slug;
+    const data = keys?.map((key, index) => {
+      let slug = key.replace(/^.*[\\\/]/, "").slice(0, -3);
+      const { attributes, html } = values[index];
+
+      return {
+        frontmatter: attributes,
+        markdownBody: html,
+        slug,
+      };
     });
     return data;
-  })(require.context("../../public/blog-posts", true, /\.md$/));
+  })(require.context("../../../public/blog-posts", true, /\.md$/));
 
-  const paths = blogSlugs.map((slug) => `/post/${slug}`);
+  const paths = blogSlugs.map((post) => {
+    return {
+      params: { post_slug: post.slug },
+    };
+  });
 
   return {
     paths,

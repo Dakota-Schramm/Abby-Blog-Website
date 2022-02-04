@@ -1,8 +1,6 @@
 import Layout from "../components/Layout";
-// import { attributes, react as HomeContent } from "../content/home.md";
 
 export default function Home({ title, description, ...props }) {
-  // let { title, cats } = attributes;
   const scripts = [
     "https://identity.netlify.com/v1/netlify-identity-widget.js",
   ];

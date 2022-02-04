@@ -1,4 +1,5 @@
 import Layout from "../../components/Layout";
+import PostList from "../../components/PostList";
 
 export default function Blog({ posts, title, description, ...props }) {
   return (
@@ -21,17 +22,7 @@ export async function getStaticProps() {
 
     const data = keys?.map((key, index) => {
       let slug = key.replace(/^.*[\\\/]/, "").slice(0, -3);
-      /* 
-         Need to fix something here so that pages can load front matter correctly.
-      */
-      console.log(keys, values);
-      const { attributes, react } = values[index];
-      console.log(attributes, react);
-
-      /* const { attributes, react } = await import(
-        `../../../public/blog-posts/${slug}.md`
-      );
-      */
+      const { attributes, html } = values[index];
 
       return {
         frontmatter: attributes,
@@ -41,6 +32,8 @@ export async function getStaticProps() {
     });
     return data;
   })(require.context("../../../public/blog-posts/", true, /\.md$/));
+
+  console.log(posts);
 
   return {
     props: {
