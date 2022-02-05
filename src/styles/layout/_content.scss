@@ -1,5 +1,14 @@
 .layout {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   @include background-gradient-color;
+}
+
+.content {
+  background-color: white;
+  width: 80%; // CHANGE THIS TO BE RESPONSIVE ON DEVICES
+  display: flex;
 }

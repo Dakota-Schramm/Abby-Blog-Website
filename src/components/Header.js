@@ -4,6 +4,9 @@ export default function Header() {
   return (
     <>
       <header className="header">
+        <Link href="/">
+          <a className="nav-logo">Abby Hickman</a>
+        </Link>
         <nav className="nav">
           <Link href="/">
             <a className="nav-item">Home</a>

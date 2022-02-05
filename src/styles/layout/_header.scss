@@ -3,14 +3,25 @@
 // -----------------------------------------------------------------------------
 
 .header {
+  position: sticky;
+  top: 0px;
+  width: 100%;
   display: flex;
+  background-color: black;
   justify-content: center;
+  padding: 10px 20px 10px 20px;
 }
 
 .nav {
   display: flex;
 }
 
+.nav-logo {
+  position: absolute;
+  left: 0px;
+}
+
 .nav-item {
   display: flex;
+  margin: 0px 15px;
 }
