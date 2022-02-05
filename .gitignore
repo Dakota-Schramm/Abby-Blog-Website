@@ -7,8 +7,6 @@
 
 # testing
 /coverage
-*.css
-*.css.map
 
 # next.js
 /.next/
