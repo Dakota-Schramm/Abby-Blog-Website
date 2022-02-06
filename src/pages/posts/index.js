@@ -3,7 +3,7 @@ import PostList from "../../components/PostList";
 
 export default function Blog({ posts, title, description, ...props }) {
   return (
-    <Layout pageTitle={title}>
+    <Layout pageTitle={`${title} | Blog`}>
       <h1 className="title">Welcome to my blog!</h1>
       <p className="description">{description}</p>
       <main>
