@@ -2,9 +2,11 @@ import Link from "next/link";
 
 import Layout from "../../components/Layout";
 
+const deftaultCoverImage = "/img/30c79efa5819b7987bde857f620e6c3e.jpg";
+
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>;
-
+  console.log(frontmatter);
   return (
     <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
       <Link href="/posts/">
@@ -12,6 +14,10 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
       </Link>
       <article>
         <h1>{frontmatter.title}</h1>
+        <img
+          className="cover-image"
+          src={`/${frontmatter.image || deftaultCoverImage}`}
+        />
         <div dangerouslySetInnerHTML={{ __html: markdownBody }}></div>
       </article>
     </Layout>
