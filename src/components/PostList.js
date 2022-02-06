@@ -6,18 +6,25 @@ export default function PostList({ posts }) {
   return (
     <div>
       {!posts && <div>No posts!</div>}
-      <ul>
-        {posts &&
-          posts.map((post) => {
-            return (
-              <li key={post.slug}>
-                <Link href={`/posts/${encodeURIComponent(post.slug)}`}>
-                  <a>{post.frontmatter.title}</a>
-                </Link>
-              </li>
-            );
-          })}
-      </ul>
+      {posts &&
+        posts.map((post) => {
+          const d = new Date(post.frontmatter.date);
+
+          return (
+            <div className="post-entry">
+              <Link href={`/posts/${encodeURIComponent(post.slug)}`}>
+                <a className="post-title">{post.frontmatter.title}</a>
+              </Link>
+              <div className="post-sub-title">
+                {`Written on ${d.toDateString()}`}
+              </div>
+              <div
+                className="post-content"
+                dangerouslySetInnerHTML={{ __html: post.markdownBody }}
+              ></div>
+            </div>
+          );
+        })}
     </div>
   );
 }
