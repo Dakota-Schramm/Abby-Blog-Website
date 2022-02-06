@@ -4,7 +4,9 @@
 
 /// Regular font family
 /// @type List
-$text-font-stack: "Black Han Sans", "Open Sans", "Helvetica Neue Light",
+$title-font: "Black Han Sans";
+
+$text-font-stack: "Georgia", "Open Sans", "Helvetica Neue Light",
   "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
 
 /// Code (monospace) font family
@@ -28,11 +30,11 @@ $purple: #ee93ff !default;
 
 /// Copy text color
 /// @type Color
-$text-color: $purple;
+$text-color: black;
 
 /// Main brand color
 /// @type Color
-$brand-color: rgb(229, 0, 80) !default;
+$brand-color: $purple;
 
 /// Light grey
 /// @type Color

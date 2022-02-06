@@ -11,4 +11,7 @@
   background-color: white;
   width: 80%; // CHANGE THIS TO BE RESPONSIVE ON DEVICES
   display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-color: $purple;
 }

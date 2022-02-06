@@ -13,10 +13,10 @@
 @import "layout/header", "layout/footer", "layout/content";
 
 // 5. Components
-@import "components/button";
+@import "components/button", "components/headerImages";
 
 // 6. Page-specific styles
-@import "pages/home";
+@import "pages/home", "pages/contact", "pages/blog";
 
 // 7. Themes
 @import "themes/default";
