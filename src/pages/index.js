@@ -1,5 +1,7 @@
 import Layout from "../components/Layout";
 
+const deftaultCoverImage = "/img/30c79efa5819b7987bde857f620e6c3e.jpg";
+
 export default function Home({ title, description, ...props }) {
   const scripts = [
     "https://identity.netlify.com/v1/netlify-identity-widget.js",
@@ -12,7 +14,7 @@ export default function Home({ title, description, ...props }) {
         pageDescription={description}
       >
         <div className="home-layout">
-          <div className="headshot">{/* put headshot here*/}</div>
+          <img className="headshot" src={deftaultCoverImage} />
           <div className="biography">
             <p>
               {
