@@ -11,7 +11,7 @@ export default function PostList({ posts }) {
           const d = new Date(post.frontmatter.date);
 
           return (
-            <div className="post-entry">
+            <div className="post-entry" key={post.slug}>
               <Link href={`/posts/${encodeURIComponent(post.slug)}`}>
                 <a className="post-title">{post.frontmatter.title}</a>
               </Link>
