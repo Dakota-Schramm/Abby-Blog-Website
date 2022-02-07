@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+import Image from "next/image";
 
 const deftaultCoverImage = "/img/30c79efa5819b7987bde857f620e6c3e.jpg";
 
@@ -14,7 +15,13 @@ export default function Home({ title, description, ...props }) {
         pageDescription={description}
       >
         <div className="home-layout">
-          <img className="headshot" src={deftaultCoverImage} />
+          <Image
+            src={deftaultCoverImage}
+            alt="Headshot picture of Abby Hickman."
+            className="headshot"
+            width="500rem"
+            height="500rem"
+          />
           <div className="biography">
             <p>
               {

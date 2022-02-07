@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import Layout from "../../components/Layout";
 
@@ -14,9 +15,12 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
       </Link>
       <article>
         <h1>{frontmatter.title}</h1>
-        <img
-          className="cover-image"
+        <Image
           src={`/${frontmatter.image || deftaultCoverImage}`}
+          alt="A cover banner for the blog post."
+          height="20vh"
+          width="100vw"
+          className="cover-image"
         />
         <div dangerouslySetInnerHTML={{ __html: markdownBody }}></div>
       </article>
