@@ -19,7 +19,7 @@ export default function Layout({
         ))}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Black+Han+Sans"
+          href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=optional"
         ></link>
       </Head>
       <section className="layout">
