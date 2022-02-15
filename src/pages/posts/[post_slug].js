@@ -7,7 +7,7 @@ const deftaultCoverImage = "/img/30c79efa5819b7987bde857f620e6c3e.jpg";
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>;
-  console.log(frontmatter);
+
   return (
     <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
       <Link href="/posts/">
@@ -32,15 +32,32 @@ export async function getStaticProps(ctx) {
   const { post_slug } = ctx.params;
 
   const config = await import("../../../siteconfig.json");
-  const { attributes, html } = await import(
-    `../../../public/blog-posts/${post_slug}.md`
-  );
+
+  const blogPost = ((context) => {
+    const keys = context.keys();
+    const values = keys.map(context);
+
+    let data;
+    keys.forEach((key, index) => {
+      if (key.includes(post_slug)) {
+        console.log(values[index]);
+        data = values[index];
+      }
+    });
+
+    return {
+      frontmatter: data.attributes,
+      markdownBody: data.html,
+    };
+  })(require.context("../../../public/blog-posts", true, /\.md$/));
+
+  console.log(blogPost);
 
   return {
     props: {
       siteTitle: config.title,
-      frontmatter: attributes,
-      markdownBody: html,
+      frontmatter: blogPost.frontmatter,
+      markdownBody: blogPost.markdownBody,
     },
   };
 }
@@ -65,7 +82,7 @@ export async function getStaticPaths() {
 
   const paths = blogSlugs.map((post) => {
     return {
-      params: { post_slug: post.slug },
+      params: { post_slug: post.frontmatter.title },
     };
   });
 
