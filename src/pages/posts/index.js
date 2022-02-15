@@ -52,7 +52,9 @@ export async function getStaticProps() {
       };
     });
     // Sort the posts -- Newest first ??
-    // At least need this ordering for the blog section above.
+    // At least need this ordering for the blog section above.:w
+
+    data.reverse();
     return data;
   })(require.context("../../../public/blog-posts/", true, /\.md$/));
 
