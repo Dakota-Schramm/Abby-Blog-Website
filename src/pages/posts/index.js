@@ -1,11 +1,29 @@
+import Link from "next/link";
+
 import Layout from "../../components/Layout";
 import PostList from "../../components/PostList";
 
 export default function Blog({ posts, title, description, ...props }) {
+  const mostRecent = posts.slice(0, 5);
+
   return (
     <Layout pageTitle={`${title} | Blog`}>
       <h1 className="title">Welcome to my blog!</h1>
-      <p className="description">{description}</p>
+      <div className="subtitle">
+        <p className="description">{description}</p>
+        <ul className="most-recent">
+          {mostRecent.map((post) => {
+            return (
+              <li className="most-recent-item" key={post.slug}>
+                <Link href={`/posts/${encodeURIComponent(post.slug)}`}>
+                  <a className="post-title">{post.frontmatter.title}</a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
       <main>
         <PostList posts={posts} />
       </main>
@@ -21,19 +39,22 @@ export async function getStaticProps() {
     const values = keys.map(context);
 
     const data = keys?.map((key, index) => {
-      let slug = key.replace(/^.*[\\\/]/, "").slice(0, -3);
       const { attributes, html } = values[index];
+      let slug = key.replace(/^.*[\\\/]/, "").slice(0, -3);
+      // This passes file name directly to post_slug -- clean it first for better url
+      const arr = slug.split("_");
+      const blogTitle = arr[1];
 
       return {
         frontmatter: attributes,
         markdownBody: html,
-        slug,
+        blogTitle,
       };
     });
+    // Sort the posts -- Newest first ??
+    // At least need this ordering for the blog section above.
     return data;
   })(require.context("../../../public/blog-posts/", true, /\.md$/));
-
-  console.log(posts);
 
   return {
     props: {
