@@ -16,7 +16,7 @@ export default function PostList({ posts }) {
                 <a className="post-title">{post.frontmatter.title}</a>
               </Link>
               <div className="post-sub-title">
-                {`Written on ${d.toDateString()}`}
+                {`Posted on ${d.toDateString()}`}
               </div>
               <div
                 className="post-content"
