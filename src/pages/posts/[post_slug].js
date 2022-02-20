@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import optimizeTitleForSEO from "../../scripts/RoutingParams";
+
 import Layout from "../../components/Layout";
 
 const deftaultCoverImage = "/img/30c79efa5819b7987bde857f620e6c3e.jpg";
@@ -28,30 +30,34 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   );
 }
 
+// Find and load the correct blog post for a given route
 export async function getStaticProps(ctx) {
   const { post_slug } = ctx.params;
 
   const config = await import("../../../siteconfig.json");
 
+  // Find blogPost with given title.
   const blogPost = ((context) => {
     const keys = context.keys();
     const values = keys.map(context);
 
-    let data;
+    let slugToFind;
+    // Find file that has our post_slug included in the fileName
+    console.log("looking for ", post_slug);
     keys.forEach((key, index) => {
-      if (key.includes(post_slug)) {
-        console.log(values[index]);
-        data = values[index];
+      console.log("current key is: ", key);
+      const titleFormatted = optimizeTitleForSEO(key);
+      if (titleFormatted.includes(post_slug)) {
+        console.log(post_slug, " included in ", key);
+        slugToFind = values[index];
       }
     });
 
     return {
-      frontmatter: data.attributes,
-      markdownBody: data.html,
+      frontmatter: slugToFind.attributes,
+      markdownBody: slugToFind.html,
     };
   })(require.context("../../../public/blog-posts", true, /\.md$/));
-
-  console.log(blogPost);
 
   return {
     props: {
@@ -62,27 +68,29 @@ export async function getStaticProps(ctx) {
   };
 }
 
+// Build out all posts from blog-post folder
 export async function getStaticPaths() {
+  // Get all blog posts and load their content
   const blogSlugs = ((context) => {
     const keys = context.keys();
     const values = keys.map(context);
 
     const data = keys?.map((key, index) => {
-      let slug = key.replace(/^.*[\\\/]/, "").slice(0, -3);
       const { attributes, html } = values[index];
 
       return {
         frontmatter: attributes,
         markdownBody: html,
-        slug,
       };
     });
     return data;
   })(require.context("../../../public/blog-posts", true, /\.md$/));
 
+  // Build out paths based on blog post titles
   const paths = blogSlugs.map((post) => {
+    const builtPostSlug = optimizeTitleForSEO(post.frontmatter.title);
     return {
-      params: { post_slug: post.frontmatter.title },
+      params: { post_slug: builtPostSlug },
     };
   });
 
