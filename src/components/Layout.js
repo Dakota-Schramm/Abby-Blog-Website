@@ -17,10 +17,6 @@ export default function Layout({
         {scripts?.map((val, index) => (
           <script key={index} src={val}></script>
         ))}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=optional"
-        ></link>
       </Head>
       <section className="layout">
         <Header />
