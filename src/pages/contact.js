@@ -19,8 +19,9 @@ export default function Contact({ title, description, ...props }) {
             </div>
           </div>
           <div className="contact-cv">
-            <a href="/Abigail_Hickman_Resume_Winter_2022.pdf">Here</a>&apos;s my
-            resume.
+            <a href="/Abigail_Hickman_Resume_Winter_2022.pdf">
+              Here&apos;s my resume.
+            </a>
           </div>
         </div>
       </Layout>

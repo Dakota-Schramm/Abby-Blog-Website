@@ -16,6 +16,8 @@ $code-font-stack: "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
 
 $purple: #ee93ff !default;
 
+$gradient-end: rgba(16, 0, 51, 1);
+
 @mixin background-gradient-color {
   background: rgb(34, 193, 195);
   background: linear-gradient(
@@ -24,7 +26,7 @@ $purple: #ee93ff !default;
     rgba(26, 104, 129, 1) 25%,
     rgba(26, 84, 124, 1) 50%,
     rgba(25, 63, 119, 1) 75%,
-    rgba(16, 0, 51, 1) 100%
+    $gradient-end 100%
   );
 }
 
