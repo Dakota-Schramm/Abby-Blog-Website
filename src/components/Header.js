@@ -7,18 +7,21 @@ export default function Header() {
         <Link href="/">
           <a className="nav-logo nav-logo-desktop">Abby Hickman</a>
         </Link>
-        <Link href="/">
-          <a className="nav-logo nav-logo-phone">A H</a>
-        </Link>
         <nav className="nav">
           <Link href="/">
             <a className="nav-item">Home</a>
           </Link>
           <Link href="/posts">
-            <a className="nav-item">Blog Posts</a>
+            <a className="nav-item nav-item-desktop">Blog Posts</a>
+          </Link>
+          <Link href="/posts">
+            <a className="nav-item nav-item-phone">Blog</a>
           </Link>
           <Link href="/contact">
-            <a className="nav-item">Contact Me</a>
+            <a className="nav-item nav-item-desktop">Contact Me</a>
+          </Link>
+          <Link href="/contact">
+            <a className="nav-item nav-item-phone">Contact</a>
           </Link>
         </nav>
       </header>

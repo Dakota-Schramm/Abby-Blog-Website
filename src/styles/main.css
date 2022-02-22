@@ -476,14 +476,6 @@ body {
 @media (max-width: 460px) {
   .nav-logo-desktop {
     display: none;
-    color: white;
-  }
-}
-
-@media (min-width: 461px) {
-  .nav-logo-phone {
-    display: none;
-    color: green;
   }
 }
 
@@ -492,6 +484,18 @@ body {
   display: -ms-flexbox;
   display: flex;
   margin: 0px 15px;
+}
+
+@media (max-width: 460px) {
+  .nav-item-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 461px) {
+  .nav-item-phone {
+    display: none;
+  }
 }
 
 .footer {
