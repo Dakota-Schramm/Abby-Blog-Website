@@ -5,7 +5,10 @@ export default function Header() {
     <>
       <header className="header">
         <Link href="/">
-          <a className="nav-logo">Abby Hickman</a>
+          <a className="nav-logo nav-logo-desktop">Abby Hickman</a>
+        </Link>
+        <Link href="/">
+          <a className="nav-logo nav-logo-phone">A H</a>
         </Link>
         <nav className="nav">
           <Link href="/">

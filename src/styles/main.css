@@ -473,6 +473,20 @@ body {
   left: 0px;
 }
 
+@media (max-width: 460px) {
+  .nav-logo-desktop {
+    display: none;
+    color: white;
+  }
+}
+
+@media (min-width: 461px) {
+  .nav-logo-phone {
+    display: none;
+    color: green;
+  }
+}
+
 .nav-item {
   display: -webkit-box;
   display: -ms-flexbox;

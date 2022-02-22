@@ -1,6 +1,7 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+@import "../vendors/include-media";
 
 .header {
   font-family: $title-font;
@@ -28,6 +29,20 @@
 .nav-logo {
   position: absolute;
   left: 0px;
+
+  @include media("<=phone") {
+    &-desktop {
+      display: none;
+      color: white;
+    }
+  }
+
+  @include media(">phone") {
+    &-phone {
+      display: none;
+      color: green;
+    }
+  }
 }
 
 .nav-item {
