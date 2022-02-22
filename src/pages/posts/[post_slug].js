@@ -43,14 +43,9 @@ export async function getStaticProps(ctx) {
 
     let slugToFind;
     // Find file that has our post_slug included in the fileName
-    console.log("looking for ", post_slug);
     keys.forEach((key, index) => {
-      console.log("current key is: ", key);
       const titleFormatted = optimizeTitleForSEO(key);
-      if (titleFormatted.includes(post_slug)) {
-        console.log(post_slug, " included in ", key);
-        slugToFind = values[index];
-      }
+      if (titleFormatted.includes(post_slug)) slugToFind = values[index];
     });
 
     return {

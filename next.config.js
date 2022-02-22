@@ -1,3 +1,6 @@
+const fetchURL =
+  "https://github.com/Dakota-Schramm/nextjs-netlify-blog-template/tree/main/public/img";
+
 module.exports = {
   reactStrictMode: true,
   webpack: (cfg) => {
@@ -7,8 +10,9 @@ module.exports = {
     });
     return cfg;
   },
+  target: "serverless",
   images: {
-    loader: "imgix",
-    path: "http://localhost:3000",
+    loader: "cloudinary",
+    path: `https://res.cloudinary.com/deohelidx/image/fetch/${fetchURL}`,
   },
 };

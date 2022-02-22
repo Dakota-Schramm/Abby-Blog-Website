@@ -8,19 +8,12 @@ export default function PostList({ posts }) {
 
   return (
     <div className="post-list">
-      {!posts && <div>No posts!</div>}
-      {posts &&
+      {posts ? (
         posts.map((post) => {
-          /* Need to update so that
-              date string is formatted
-              frontmatter.title is properly formatted for route
-          */
-
+          // Format for rendering
           const d = new Date(post.frontmatter.date);
           const formattedDate = formatDateToCustomString(d);
-
           const builtURL = optimizeTitleForSEO(post.frontmatter.title);
-
           const firstParagraph = post.markdownBody.split("\n")[0];
 
           return (
@@ -40,7 +33,10 @@ export default function PostList({ posts }) {
               </Link>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div>No posts!</div>
+      )}
     </div>
   );
 }
