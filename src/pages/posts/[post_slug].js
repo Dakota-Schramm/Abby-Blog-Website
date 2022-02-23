@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import optimizeTitleForSEO from "../../scripts/RoutingParams";
+import formatDateToCustomString from "../../scripts/formatDate";
 
 import Layout from "../../components/Layout";
 
@@ -10,21 +11,29 @@ const deftaultCoverImage = "/img/30c79efa5819b7987bde857f620e6c3e.jpg";
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>;
 
+  const formattedDate = formatDateToCustomString(frontmatter.date);
+
   return (
     <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
       <Link href="/posts/">
         <a>Back to post list</a>
       </Link>
-      <article>
-        <h1>{frontmatter.title}</h1>
+      <article className="blogpost-article">
+        <h1 className="blogpost-title">
+          <em>{frontmatter.title}</em>
+        </h1>
+        <h2 className="blogpost-subtitle">{`Posted on ${formattedDate}`}</h2>
         <Image
           src={`/${frontmatter.image || deftaultCoverImage}`}
           alt="A cover banner for the blog post."
           height="20vh"
           width="100vw"
-          className="cover-image"
+          className="blogpost-cover-image"
         />
-        <div dangerouslySetInnerHTML={{ __html: markdownBody }}></div>
+        <div
+          className="blogpost-markdown"
+          dangerouslySetInnerHTML={{ __html: markdownBody }}
+        ></div>
       </article>
     </Layout>
   );

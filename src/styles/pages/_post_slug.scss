@@ -1,0 +1,30 @@
+.blogpost {
+  &-article {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &-title {
+    display: flex;
+    justify-content: center;
+    font-family: $title-font;
+    color: $purple;
+  }
+
+  &-subtitle {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-cover-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-markdown {
+    margin: 2rem;
+    text-align: left;
+  }
+}

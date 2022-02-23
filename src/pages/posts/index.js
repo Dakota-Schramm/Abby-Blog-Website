@@ -29,6 +29,7 @@ export default function Blog({ posts, title, description, ...props }) {
           })}
         </ul>
       </div>
+      <h2 className="posts-section-title">Posts:</h2>
       <main>
         <PostList posts={posts} />
       </main>

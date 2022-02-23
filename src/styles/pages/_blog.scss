@@ -2,11 +2,14 @@
   display: flex;
   justify-content: center;
   font-family: $title-font;
+
+  color: $purple;
 }
 
 .subtitle {
   display: flex;
   flex-direction: column;
+  font-size: 1.2rem;
 }
 
 .description {
@@ -23,6 +26,7 @@
     display: flex;
     justify-content: center;
     font-family: $title-font;
+    color: $purple;
   }
 
   &-item {
@@ -30,12 +34,21 @@
   }
 }
 
+.posts-section-title {
+  display: flex;
+  justify-content: center;
+
+  font-size: 2em;
+  font-family: $title-font;
+  color: $purple;
+}
+
 .post-entry {
   margin: 2rem;
 }
 
 .post-title {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-family: $title-font;
 }
 .post-sub-title {
