@@ -1,4 +1,6 @@
-export default function formatDateToCustomString(dateobj) {
+export default function formatDateToCustomString(datestr) {
+  const d = new Date(datestr);
+
   const days = {
     0: "Sunday",
     1: "Monday",
@@ -24,10 +26,10 @@ export default function formatDateToCustomString(dateobj) {
     11: "December",
   };
 
-  const dayFormatted = days[dateobj.getDay()];
-  const monthFormatted = months[dateobj.getMonth()];
-  const dateFormatted = dateobj.getDate();
-  const yearFormatted = dateobj.getFullYear();
+  const dayFormatted = days[d.getDay()];
+  const monthFormatted = months[d.getMonth()];
+  const dateFormatted = d.getDate();
+  const yearFormatted = d.getFullYear();
 
   return `${dayFormatted}, ${monthFormatted} ${dateFormatted} ${yearFormatted}`;
 }

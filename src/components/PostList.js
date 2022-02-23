@@ -11,16 +11,8 @@ export default function PostList({ posts }) {
       {!posts && <div>No posts!</div>}
       {posts &&
         posts.map((post) => {
-          /* Need to update so that
-              date string is formatted
-              frontmatter.title is properly formatted for route
-          */
-
-          const d = new Date(post.frontmatter.date);
-          const formattedDate = formatDateToCustomString(d);
-
+          const formattedDate = formatDateToCustomString(post.frontmatter.date);
           const builtURL = optimizeTitleForSEO(post.frontmatter.title);
-
           const firstParagraph = post.markdownBody.split("\n")[0];
 
           return (
