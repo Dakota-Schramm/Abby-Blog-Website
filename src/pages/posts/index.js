@@ -13,6 +13,7 @@ export default function Blog({ posts, title, description, ...props }) {
       <h1 className="title">Welcome to my blog!</h1>
       <div className="subtitle">
         <p className="description">{description}</p>
+        <h2 className="most-recent-title">Most Recent:</h2>
         <ul className="most-recent">
           {mostRecent.map((post) => {
             const postTitleFormatted = optimizeTitleForSEO(
