@@ -3,6 +3,8 @@
 // -----------------------------------------------------------------------------
 
 /// Regular font family
+
+@import url(https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=optional);
 /// @type List
 $title-font: "Black Han Sans";
 
@@ -58,9 +60,8 @@ $dark-grey: rgb(68, 68, 68) !default;
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: (
-  "small": 320px,
-  "medium": 768px,
-  "large": 1024px,
+  phone: 460px,
+  desktop: 1024px,
 ) !default;
 
 /// Relative or absolute URL where all assets are served from

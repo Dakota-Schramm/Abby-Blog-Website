@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=optional);
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -532,7 +533,6 @@ body {
 
 .content {
   background-color: white;
-  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
