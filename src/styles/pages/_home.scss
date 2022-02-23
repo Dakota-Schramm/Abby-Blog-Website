@@ -5,13 +5,17 @@
   display: flex;
   height: 100vh;
   align-items: center;
+
+  @include media("<=phone") {
+    flex-direction: column;
+  }
 }
 
 .headshot {
   width: 50%;
   height: 30%;
   margin: 10px;
-  border-radius: 30%;
+  border-radius: 50%;
 }
 
 .biography {
