@@ -532,7 +532,18 @@ body {
 }
 
 .content {
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  /*
   background-color: white;
+  border-style: solid;
+  border-color: $purple;
+  */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -540,8 +551,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-style: solid;
-  border-color: #ee93ff;
 }
 
 @media (max-width: 460px) {
