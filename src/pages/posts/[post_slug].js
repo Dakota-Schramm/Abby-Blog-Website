@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 import optimizeTitleForSEO from "../../scripts/RoutingParams";
 
@@ -17,11 +16,9 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
       </Link>
       <article>
         <h1>{frontmatter.title}</h1>
-        <Image
+        <img
           src={`/${frontmatter.image || deftaultCoverImage}`}
           alt="A cover banner for the blog post."
-          height="20vh"
-          width="100vw"
           className="cover-image"
         />
         <div dangerouslySetInnerHTML={{ __html: markdownBody }}></div>
