@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Information on this project
+
+This is a Next.js app with a serverless CMS. Styling is written in SASS. Image optimization configured with Cloudinary.
+
 ## Getting Started
 
 First, run the development server:

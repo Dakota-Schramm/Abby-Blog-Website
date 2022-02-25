@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 import optimizeTitleForSEO from "../../scripts/RoutingParams";
 import formatDateToCustomString from "../../scripts/formatDate";
@@ -23,12 +22,10 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
           <em>{frontmatter.title}</em>
         </h1>
         <h2 className="blogpost-subtitle">{`Posted on ${formattedDate}`}</h2>
-        <Image
+        <img
           src={`/${frontmatter.image || deftaultCoverImage}`}
           alt="A cover banner for the blog post."
-          height="20vh"
-          width="100vw"
-          className="blogpost-cover-image"
+          className="cover-image"
         />
         <div
           className="blogpost-markdown"
@@ -52,14 +49,9 @@ export async function getStaticProps(ctx) {
 
     let slugToFind;
     // Find file that has our post_slug included in the fileName
-    console.log("looking for ", post_slug);
     keys.forEach((key, index) => {
-      console.log("current key is: ", key);
       const titleFormatted = optimizeTitleForSEO(key);
-      if (titleFormatted.includes(post_slug)) {
-        console.log(post_slug, " included in ", key);
-        slugToFind = values[index];
-      }
+      if (titleFormatted.includes(post_slug)) slugToFind = values[index];
     });
 
     return {

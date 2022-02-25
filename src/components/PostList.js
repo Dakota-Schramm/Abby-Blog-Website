@@ -8,10 +8,10 @@ export default function PostList({ posts }) {
 
   return (
     <div className="post-list">
-      {!posts && <div>No posts!</div>}
-      {posts &&
+      {posts ? (
         posts.map((post) => {
           const formattedDate = formatDateToCustomString(post.frontmatter.date);
+
           const builtURL = optimizeTitleForSEO(post.frontmatter.title);
           const firstParagraph = post.markdownBody.split("\n")[0];
 
@@ -32,7 +32,10 @@ export default function PostList({ posts }) {
               </Link>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div>No posts!</div>
+      )}
     </div>
   );
 }
