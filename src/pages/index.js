@@ -13,8 +13,9 @@ export default function Home({ title, description, ...props }) {
         scripts={scripts}
         pageTitle={`${title} | About`}
         pageDescription={description}
+        pageStyle="home-layout"
       >
-        <div className="home-layout">
+        <div className="content-section home-container">
           <Image
             src={deftaultCoverImage}
             alt="Headshot picture of Abby Hickman."

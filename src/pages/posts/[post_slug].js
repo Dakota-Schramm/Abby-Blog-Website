@@ -14,7 +14,10 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   const formattedDate = formatDateToCustomString(frontmatter.date);
 
   return (
-    <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
+    <Layout
+      pageTitle={`${siteTitle} | ${frontmatter.title}`}
+      pageStyle="content-section"
+    >
       <Link href="/posts/">
         <a>Back to post list</a>
       </Link>

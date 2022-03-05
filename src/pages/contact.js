@@ -6,8 +6,12 @@ import BxlTwitterIcon from "../components/svg/Twitter";
 export default function Contact({ title, description, ...props }) {
   return (
     <>
-      <Layout pageTitle={`${title} | Contact Me`} pageDescription={description}>
-        <div className="contact-layout">
+      <Layout
+        pageTitle={`${title} | Contact Me`}
+        pageDescription={description}
+        pageStyle="contact-layout"
+      >
+        <div className="content-section">
           <div className="contacts">
             <div className="contact-item">
               <BxlTwitterIcon width="5rem" height="5rem" />
