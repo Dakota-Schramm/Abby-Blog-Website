@@ -16,7 +16,7 @@ export default function PostList({ posts }) {
           const firstParagraph = post.markdownBody.split("\n")[0];
 
           return (
-            <div className="post-entry" key={post.slug}>
+            <div className="post-entry content-section" key={post.slug}>
               <Link href={`/posts/${encodeURIComponent(builtURL)}`}>
                 <a className="post-title">{post.frontmatter.title}</a>
               </Link>

@@ -14,10 +14,10 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
 
   return (
     <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
-      <Link href="/posts/">
-        <a>Back to post list</a>
-      </Link>
-      <article className="blogpost-article">
+      <div className="content-section">
+        <Link href="/posts/">
+          <a>Back to post list</a>
+        </Link>
         <h1 className="blogpost-title">
           <em>{frontmatter.title}</em>
         </h1>
@@ -27,6 +27,9 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
           alt="A cover banner for the blog post."
           className="cover-image"
         />
+      </div>
+
+      <article className="blogpost-article content-section">
         <div
           className="blogpost-markdown"
           dangerouslySetInnerHTML={{ __html: markdownBody }}

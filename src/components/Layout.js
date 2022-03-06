@@ -6,6 +6,7 @@ export default function Layout({
   pageTitle,
   pageDescription,
   scripts,
+  pageStyle,
   ...props
 }) {
   return (
@@ -20,7 +21,7 @@ export default function Layout({
       </Head>
       <section className="layout">
         <Header />
-        <div className="content">{children}</div>
+        <div className={`content ${pageStyle}`}>{children}</div>
       </section>
       <footer className="footer">Built by me!</footer>
     </>
