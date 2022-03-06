@@ -16,8 +16,14 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin: 1rem;
 
   @include media("<=phone") {
     flex-direction: column;
   }
+}
+
+.contact-cv {
+  display: flex;
+  justify-content: center;
 }

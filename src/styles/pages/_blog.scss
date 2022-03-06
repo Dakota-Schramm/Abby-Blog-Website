@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .description {
@@ -44,7 +45,7 @@
 }
 
 .post-entry {
-  margin: 2rem;
+  margin-bottom: 2rem;
 }
 
 .post-title {

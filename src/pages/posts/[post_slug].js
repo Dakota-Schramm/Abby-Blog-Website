@@ -14,25 +14,26 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   const formattedDate = formatDateToCustomString(frontmatter.date);
 
   return (
-    <Layout
-      pageTitle={`${siteTitle} | ${frontmatter.title}`}
-      pageStyle="content-section"
-    >
-      <Link href="/posts/">
-        <a>Back to post list</a>
-      </Link>
-      <article className="blogpost-article">
+    <Layout pageTitle={`${siteTitle} | ${frontmatter.title}`}>
+      <div className="content-section">
+        <Link href="/posts/">
+          <a>Back to post list</a>
+        </Link>
         <h1 className="blogpost-title">
           <em>{frontmatter.title}</em>
         </h1>
         <h2 className="blogpost-subtitle">{`Posted on ${formattedDate}`}</h2>
-        <Image
-          src={`/${frontmatter.image || deftaultCoverImage}`}
-          alt="A cover banner for the blog post."
-          height="20vh"
-          width="100vw"
-          className="blogpost-cover-image"
-        />
+      </div>
+
+      <Image
+        src={`/${frontmatter.image || deftaultCoverImage}`}
+        alt="A cover banner for the blog post."
+        height="20vh"
+        width="100vw"
+        className="blogpost-cover-image"
+      />
+
+      <article className="blogpost-article content-section">
         <div
           className="blogpost-markdown"
           dangerouslySetInnerHTML={{ __html: markdownBody }}
