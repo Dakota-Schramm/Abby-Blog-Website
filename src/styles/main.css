@@ -461,6 +461,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   z-index: 1;
+  border: 1px solid white;
 }
 
 .nav {
