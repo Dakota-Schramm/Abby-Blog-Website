@@ -3,7 +3,7 @@
   justify-content: center;
   font-family: $title-font;
 
-  color: $purple;
+  color: $brand-color;
 }
 
 .subtitle {
@@ -27,7 +27,7 @@
     display: flex;
     justify-content: center;
     font-family: $title-font;
-    color: $purple;
+    color: $brand-color;
   }
 
   &-item {
@@ -41,7 +41,7 @@
 
   font-size: 2em;
   font-family: $title-font;
-  color: $purple;
+  color: $brand-color;
 }
 
 .post-entry {
