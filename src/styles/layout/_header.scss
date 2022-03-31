@@ -29,7 +29,7 @@
 
 .nav-logo {
   position: absolute;
-  left: 0px;
+  left: 10px;
 
   @include media("<=phone") {
     &-desktop {
