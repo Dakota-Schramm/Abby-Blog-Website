@@ -1,6 +1,5 @@
 {
-    "component": {
-        "testFiles": "**/*.spec.{js,ts,jsx,tsx}",
-        "componentFolder": "src"
-    }
+    "testFiles": "**/*.spec.{js,ts,jsx,tsx}",
+    "integrationFolder": "src"
+    
 }
