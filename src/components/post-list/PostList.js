@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import optimizeTitleForSEO from "../scripts/RoutingParams";
-import formatDateToCustomString from "../scripts/formatDate";
+import optimizeTitleForSEO from "../../scripts/RoutingParams";
+import formatDateToCustomString from "../../scripts/formatDate";
 
 export default function PostList({ posts }) {
   if (posts === "undefined") return null;

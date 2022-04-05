@@ -3,7 +3,7 @@ import Link from "next/link";
 import optimizeTitleForSEO from "../../scripts/RoutingParams";
 
 import Layout from "../../components/Layout";
-import PostList from "../../components/PostList";
+import PostList from "../../components/post-list";
 
 export default function Blog({ posts, title, description, ...props }) {
   const mostRecent = posts.slice(0, 5);

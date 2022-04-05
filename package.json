@@ -19,6 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/preset-react": "^7.16.7",
+    "@faker-js/faker": "^6.1.2",
     "@types/react": "^17.0.43",
     "cypress": "^9.5.3",
     "eslint": "8.8.0",
