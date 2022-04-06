@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 import PostList from './PostList'
+import Blog from '../../pages/posts'
+
+import "../../styles/pages/_blog.scss"
 
 
 const { faker } = require('@faker-js/faker');
@@ -8,13 +11,7 @@ const { faker } = require('@faker-js/faker');
 function generatePost() {
     const title = faker.lorem.words(7)
     const date = faker.date.past()
-    const body = {
-        ...Array(3).map(()=> {
-            return (
-                <p>{faker.lorem.sentences(10)}</p>
-            )
-        })
-    }
+    const body = `${[...Array(3)].map(() => `<p>${faker.lorem.sentences(10)}</p>` ).join("\n")}` 
 
     return {
         frontmatter: {
@@ -25,14 +22,13 @@ function generatePost() {
     }
 }
 
-describe("post-list with mock data"), () => {
-
+describe("post-list with mock data", () => {
     it("post-list renders", () => {
         var posts = []; 
         for(let i=0; i<50; i++) {
             posts.push(generatePost())
         }
 
-        mount(<PostList posts={posts} />)
+        mount(<Blog posts={posts} />)
     })
-}
+})
