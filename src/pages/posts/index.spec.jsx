@@ -1,9 +1,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
-import PostList from './PostList'
-import Blog from '../../pages/posts'
+import Blog from './'
+import { setConfig } from 'next/config';
 
-import "../../styles/pages/_blog.scss"
 
 
 const { faker } = require('@faker-js/faker');

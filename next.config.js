@@ -6,5 +6,5 @@ module.exports = {
       loader: "frontmatter-markdown-loader",
     });
     return cfg;
-  },
+  }
 };
