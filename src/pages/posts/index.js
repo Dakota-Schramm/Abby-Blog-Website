@@ -6,10 +6,16 @@ import optimizeTitleForSEO from "../../scripts/RoutingParams";
 import Layout from "../../components/Layout";
 import PostList from "../../components/post-list";
 
+/* 
+  TODO 
+  Fix jump to top of page to go to Posts section instead?
+  if on first or last page, don't jump to top of page.
+*/
+
 export default function Blog({ posts, title, description, ...props }) {
   const mostRecent = posts.slice(0, 5);
   
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0)
   const [currentPosts, setCurrentPosts] = useState(posts.slice(0, 8));
   const MAX_PAGE = Math.floor(posts.length / 8);
 
@@ -51,11 +57,11 @@ export default function Blog({ posts, title, description, ...props }) {
             </Link>
             <Link href="#">
               
-              <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage >= 1 ? currentPage - 1 : 1)}>
+              <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage > 0 ? currentPage - 1 : 0)}>
                 {`<`}
               </button>
             </Link>
-            <div className="blog-index-btn blog-index-num">{currentPage}</div>
+            <div className="blog-index-btn blog-index-num">{currentPage + 1}</div>
             <Link href="#">
               <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage < MAX_PAGE ? currentPage + 1 : MAX_PAGE ) }>
                 {`>`}
