@@ -21,12 +21,7 @@ function generatePost() {
 }
 
 describe("post-list with mock data", () => {
-    // it("post-list renders", () => {
-
-        // mount(<Blog posts={posts} />)
-    // })
-    
-    it('removes the text from __NEXT_DATA__', () => {
+    it('renders custom prop data for blogposts', () => {
         cy.visit('localhost:3000/posts', {
             onBeforeLoad: (win) => {
                 let nextData

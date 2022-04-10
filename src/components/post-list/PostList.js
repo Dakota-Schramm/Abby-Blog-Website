@@ -17,26 +17,30 @@ export default function PostList({ posts }) {
             const firstParagraph = post.markdownBody.split("\n")[0];
 
             return (
-              <div className="post-entry content-section" key={post.slug}>
-                <Link href={`/posts/${encodeURIComponent(builtURL)}`}>
-                  <a className="post-title">{post.frontmatter.title}</a>
-                </Link>
-                <div className="post-sub-title">
-                  {`Posted on ${formattedDate}`}
+              <>
+                <div className="post-entry content-section" key={post.slug}>
+                  <Link href={`/posts/${encodeURIComponent(builtURL)}`}>
+                    <a className="post-title">{post.frontmatter.title}</a>
+                  </Link>
+                  <div className="post-sub-title">
+                    {`Posted on ${formattedDate}`}
+                  </div>
+                  <div
+                    className="post-content"
+                    dangerouslySetInnerHTML={{ __html: firstParagraph }}
+                  ></div>
+                  <Link href={`/posts/${encodeURIComponent(builtURL)}`}>
+                    <a>Read more...</a>
+                  </Link>
                 </div>
-                <div
-                  className="post-content"
-                  dangerouslySetInnerHTML={{ __html: firstParagraph }}
-                ></div>
-                <Link href={`/posts/${encodeURIComponent(builtURL)}`}>
-                  <a>Read more...</a>
-                </Link>
-              </div>
+                
+              </>
             );
           })
-        ) : (
-        <div>No posts!</div>
-      )
+        ) 
+        : (
+          <div>No posts!</div>
+        )
       }
     </div>
   );

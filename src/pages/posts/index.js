@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState , useEffect } from 'react'
 
 import optimizeTitleForSEO from "../../scripts/RoutingParams";
 
@@ -7,6 +8,14 @@ import PostList from "../../components/post-list";
 
 export default function Blog({ posts, title, description, ...props }) {
   const mostRecent = posts.slice(0, 5);
+  
+  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPosts, setCurrentPosts] = useState(posts.slice(0, 8));
+  const MAX_PAGE = Math.floor(posts.length / 8);
+
+  useEffect(() => {
+    setCurrentPosts(posts.slice((8 * currentPage), (8 * (currentPage + 1))))
+  }, [currentPage])
 
   return (
     <Layout pageTitle={`${title} | Blog`}>
@@ -33,7 +42,22 @@ export default function Blog({ posts, title, description, ...props }) {
       </div>
       <h2 className="posts-section-title">Posts:</h2>
       <main>
-        <PostList posts={posts} />
+        <PostList posts={currentPosts} />
+          <div className="blog-index"> 
+            <button className="blog-index-btn" onClick={() => setCurrentPage(1)}>
+                {`<<`}
+              </button>
+            <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage >= 1 ? currentPage - 1 : 1)}>
+              {`<`}
+            </button>
+            <div className="blog-index-btn blog-index-num">{currentPage}</div>
+            <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage < MAX_PAGE ? currentPage + 1 : MAX_PAGE ) }>
+              {`>`}
+            </button>
+            <button className="blog-index-btn" onClick={() => setCurrentPage(MAX_PAGE)} >
+              {`>>`}
+            </button>
+          </div>
       </main>
     </Layout>
   );
