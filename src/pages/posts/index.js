@@ -44,19 +44,28 @@ export default function Blog({ posts, title, description, ...props }) {
       <main>
         <PostList posts={currentPosts} />
           <div className="blog-index"> 
-            <button className="blog-index-btn" onClick={() => setCurrentPage(1)}>
-                {`<<`}
+            <Link href="#">
+              <button className="blog-index-btn" onClick={() => setCurrentPage(1)}>
+                  {`<<`}
+                </button>
+            </Link>
+            <Link href="#">
+              
+              <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage >= 1 ? currentPage - 1 : 1)}>
+                {`<`}
               </button>
-            <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage >= 1 ? currentPage - 1 : 1)}>
-              {`<`}
-            </button>
+            </Link>
             <div className="blog-index-btn blog-index-num">{currentPage}</div>
-            <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage < MAX_PAGE ? currentPage + 1 : MAX_PAGE ) }>
-              {`>`}
-            </button>
-            <button className="blog-index-btn" onClick={() => setCurrentPage(MAX_PAGE)} >
-              {`>>`}
-            </button>
+            <Link href="#">
+              <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage < MAX_PAGE ? currentPage + 1 : MAX_PAGE ) }>
+                {`>`}
+              </button>
+            </Link>
+            <Link href="#">
+              <button className="blog-index-btn" onClick={() => setCurrentPage(MAX_PAGE)} >
+                {`>>`}
+              </button>
+            </Link>
           </div>
       </main>
     </Layout>
