@@ -35,6 +35,7 @@ describe("post-list with mock data", () => {
                     set(o) {
                         console.log('setting __NEXT_DATA__', o)
                         // here is our change to modify the injected parsed data
+                        o.props.pageProps.posts = []
                         o.props.pageProps.posts = posts 
                         nextData = o
                     },
