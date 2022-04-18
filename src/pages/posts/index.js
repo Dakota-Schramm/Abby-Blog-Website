@@ -23,6 +23,79 @@ export default function Blog({ posts, title, description, ...props }) {
     setCurrentPosts(posts.slice((8 * currentPage), (8 * (currentPage + 1))))
   }, [currentPage])
 
+  function PageIndexer () {
+    function FirstButton () {
+      return (
+        <Link href="#">
+          <button className={`blog-index-btn` + 
+            currentPage === 1
+              ? "blog-index-inactive"
+              : ""
+            } 
+            onClick={() => 
+            setCurrentPage(1)}
+          >
+              {`<<`}
+          </button>
+        </Link>
+      )
+    }
+
+
+    function LeftButton () {
+      return (
+        <Link href="#">
+          <button className="blog-index-btn" onClick={() => 
+            setCurrentPage(currentPage > 0 
+              ? currentPage - 1 
+              : 0
+            )}
+          >
+            {`<`}
+          </button>
+        </Link>
+      )
+    }
+
+    function RightButton () {
+      return (
+        <Link href="#">
+          <button className="blog-index-btn" onClick={() => 
+            setCurrentPage(currentPage < MAX_PAGE 
+              ? currentPage + 1 
+              : MAX_PAGE ) }
+          >
+            {`>`}
+          </button>
+        </Link>
+      )
+    }
+
+    function LastButton () {
+      return (
+        <Link href="#">
+          <button className="blog-index-btn" onClick={() => 
+            setCurrentPage(MAX_PAGE)} 
+          >
+            {`>>`}
+          </button>
+        </Link>
+      )
+    }
+
+    return (
+      <section className="blog-index"> 
+        <FirstButton />
+        <LeftButton />
+        <div className="blog-index-btn blog-index-num">{currentPage + 1}</div>
+        <RightButton />
+        <LastButton />
+      </section>
+    )
+
+  }
+
+
   return (
     <Layout pageTitle={`${title} | Blog`}>
       <h1 className="title">Welcome to my blog!</h1>
@@ -49,30 +122,7 @@ export default function Blog({ posts, title, description, ...props }) {
       <h2 className="posts-section-title">Posts:</h2>
       <main>
         <PostList posts={currentPosts} />
-          <div className="blog-index"> 
-            <Link href="#">
-              <button className="blog-index-btn" onClick={() => setCurrentPage(1)}>
-                  {`<<`}
-                </button>
-            </Link>
-            <Link href="#">
-              
-              <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage > 0 ? currentPage - 1 : 0)}>
-                {`<`}
-              </button>
-            </Link>
-            <div className="blog-index-btn blog-index-num">{currentPage + 1}</div>
-            <Link href="#">
-              <button className="blog-index-btn" onClick={() => setCurrentPage(currentPage < MAX_PAGE ? currentPage + 1 : MAX_PAGE ) }>
-                {`>`}
-              </button>
-            </Link>
-            <Link href="#">
-              <button className="blog-index-btn" onClick={() => setCurrentPage(MAX_PAGE)} >
-                {`>>`}
-              </button>
-            </Link>
-          </div>
+          <PageIndexer />
       </main>
     </Layout>
   );
