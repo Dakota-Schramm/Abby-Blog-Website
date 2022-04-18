@@ -122,33 +122,51 @@ export default function Blog({ posts, title, description, ...props }) {
 
 
   return (
-    <Layout pageTitle={`${title} | Blog`}>
+    <Layout 
+      pageTitle={`${title} | Blog`}
+      pageStyle="blog-layout"
+    
+    >
       <h1 className="title">Welcome to my blog!</h1>
       <div className="subtitle">
         <p className="description">{description}</p>
       </div>
-      <h2 className="most-recent-title">Most Recent:</h2>
-      <div className="content-section">
-        <ul className="most-recent">
-          {mostRecent.map((post) => {
-            const postTitleFormatted = optimizeTitleForSEO(
-              post.frontmatter.title
-            );
-            return (
-              <li className="most-recent-item" key={post.frontmatter.title}>
-                <Link href={`/posts/${encodeURIComponent(postTitleFormatted)}`}>
-                  <a className="post-title">{post.frontmatter.title}</a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <h2 className="posts-section-title">Posts:</h2>
-      <main>
-        <PostList posts={currentPosts} />
-          <PageIndexer />
-      </main>
+      {posts.length > 0 
+        ? (
+          <>
+            <section>
+              <h2 className="most-recent-title">Most Recent:</h2>
+              <div className="content-section"> 
+
+              <ul className="most-recent">
+                {mostRecent.map((post) => {
+                  const postTitleFormatted = optimizeTitleForSEO(
+                    post.frontmatter.title
+                  );
+                  return (
+                    <li className="most-recent-item" key={post.frontmatter.title}>
+                      <Link href={`/posts/${encodeURIComponent(postTitleFormatted)}`}>
+                        <a className="post-title">{post.frontmatter.title}</a>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              </div>
+            </section>
+            <h2 className="posts-section-title">Posts:</h2>
+            <main>
+              <PostList posts={currentPosts} />
+                <PageIndexer />
+            </main>
+          </>
+        )
+        : (
+          <>
+            <div>No posts to show!</div>
+          </>
+        )
+      }
     </Layout>
   );
 }
