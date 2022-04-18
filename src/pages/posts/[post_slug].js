@@ -48,6 +48,7 @@ export async function getStaticProps(ctx) {
   // Find blogPost with given title.
   const blogPost = ((context) => {
     const keys = context.keys();
+    if (keys.length <= 0) return null;
     const values = keys.map(context);
 
     let slugToFind;
