@@ -78,7 +78,7 @@ export async function getStaticPaths() {
   // Get all blog posts and load their content
   const blogSlugs = ((context) => {
     const keys = context.keys();
-    const values = keys.map(context);
+    const values = keys?.map(context);
 
     const data = keys?.map((key, index) => {
       const { attributes, html } = values[index];
