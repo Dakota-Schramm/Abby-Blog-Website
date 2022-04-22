@@ -1,5 +1,5 @@
 module.exports = {
-  pageExtensions: ["*.page.js","*.page.jsx"],
+  pageExtensions: ['page.jsx, page.js'],
   reactStrictMode: true,
   webpack: (cfg) => {
     cfg.module.rules.push({
