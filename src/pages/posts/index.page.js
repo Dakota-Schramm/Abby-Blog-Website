@@ -10,8 +10,6 @@ import PostList from "../../components/post-list";
   TODO 
   Fix jump to top of page to go to Posts section instead?
   if on first or last page, don't jump to top of page.
-
-  Use jQuery for 
 */
 
 export default function Blog({ posts, title, description, ...props }) {
@@ -27,84 +25,61 @@ export default function Blog({ posts, title, description, ...props }) {
 
   function PageIndexer () {
     function FirstButton () {
-      const INACTIVE = currentPage === 0 
-      let buttonStyle = "blog-index-btn";
-      if (INACTIVE) buttonStyle += " blog-index-not-active" 
-
       return (
-        <button href={!INACTIVE ? "#" : null} className={buttonStyle} 
-          onClick={() => {
-            setCurrentPage(0)
-            if (!INACTIVE) window.scrollTo(0, 0) 
-          }} 
-        >
-            {`<<`}
-        </button>
+        <Link href="#">
+          <button className={`blog-index-btn` + 
+            currentPage === 1
+              ? "blog-index-inactive"
+              : ""
+            } 
+            onClick={() => 
+            setCurrentPage(1)}
+          >
+              {`<<`}
+          </button>
+        </Link>
       )
     }
 
 
     function LeftButton () {
-      const INACTIVE = currentPage === 0 
-
-      let buttonStyle = "blog-index-btn";
-      if (INACTIVE) buttonStyle += " blog-index-not-active" 
-
       return (
-        <button href={!INACTIVE ? "#" : null}
-          className={buttonStyle} 
-          onClick={() => {
+        <Link href="#">
+          <button className="blog-index-btn" onClick={() => 
             setCurrentPage(currentPage > 0 
               ? currentPage - 1 
               : 0
-            )
-            if (!INACTIVE) window.scrollTo(0, 0) 
-          }}
-        >
-          {`<`}
-        </button>
+            )}
+          >
+            {`<`}
+          </button>
+        </Link>
       )
     }
 
     function RightButton () {
-      const INACTIVE = currentPage === MAX_PAGE;
-
-      let buttonStyle = "blog-index-btn";
-      if (INACTIVE) buttonStyle += " blog-index-not-active" 
-
       return (
-        <button href={!INACTIVE ? "#" : null} className={buttonStyle} 
-          onClick={() => {
+        <Link href="#">
+          <button className="blog-index-btn" onClick={() => 
             setCurrentPage(currentPage < MAX_PAGE 
               ? currentPage + 1 
-              : MAX_PAGE 
-            ) 
-            if (!INACTIVE) window.scrollTo(0, 0) 
-          } 
-            
-          }
-        >
-          {`>`}
-        </button>
+              : MAX_PAGE ) }
+          >
+            {`>`}
+          </button>
+        </Link>
       )
     }
 
     function LastButton () {
-      const INACTIVE = currentPage === MAX_PAGE;
-
-      let buttonStyle = "blog-index-btn";
-      if (INACTIVE) buttonStyle += " blog-index-not-active" 
-
       return (
-        <button href={!INACTIVE ? "#" : null} 
-          className={buttonStyle} 
-          onClick={() => {
-            setCurrentPage(MAX_PAGE)
-            if (!INACTIVE) window.scrollTo(0, 0) 
-          }}
-        >
-          {`>>`}
-        </button>
+        <Link href="#">
+          <button className="blog-index-btn" onClick={() => 
+            setCurrentPage(MAX_PAGE)} 
+          >
+            {`>>`}
+          </button>
+        </Link>
       )
     }
 
