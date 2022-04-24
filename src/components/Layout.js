@@ -19,10 +19,12 @@ export default function Layout({
           <script key={index} src={val} />
         ))}
       </Head>
-      <section className="layout">
-        <Header />
-        <div className={`content ${pageStyle}`}>{children}</div>
-      </section>
+      <Header />
+      <main className="layout">
+        <div className={`content ${pageStyle}`}>
+          {children}
+        </div>
+      </main>
       <footer className="footer">Built by me!</footer>
     </>
   );
