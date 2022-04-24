@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 
-const headshotImage = "./img/30c79efa5819b7987bde857f620e6c3e.jpg";
+const headshotImage = "./img/abby-hickman.jpeg";
 
 export default function Home({ title, description, ...props }) {
   const scripts = [
@@ -24,13 +24,15 @@ export default function Home({ title, description, ...props }) {
             <div className="biography">
               <p>
                 {
-                  "I can haz meow meow you are my owner so here is a dead rat. Catch \
-              small lizards, bring them into house, then unable to find them on \
-              carpet. Scratch at the door then walk away scratch the furniture \
-              pet me pet me pet me pet me, bite, scratch, why are you petting me \
-              please stop looking at your phone and pet me i like frogs and 0 \
-              gravity. Naughty running cat stare out cat door then go back \
-              inside cats are a queer kind of folk. "
+                  "Hey! My name is Abby Hickman, a student of literature \
+                  from Norman, Oklahoma. I earned my bachelor's in \
+                  anthropology from Columbia University, and recently \
+                  finished coursework for my master's in English at \
+                  the University of Limerick. My interests include \
+                  Indigenous futurisms and speculative fiction broadly. \
+                  Contained within the walls of this blog are my thoughts, \
+                  social media channels, and my resume. I hope you enjoy \
+                  your tour!"
                 }
               </p>
             </div>
