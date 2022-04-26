@@ -54,6 +54,7 @@ export default function Blog({ posts, title, description, ...props }) {
         <PostList posts={currentPosts} />
         <PageIndexer 
           currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
           posts={posts}
         />
       </main>

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export default function PageIndexer ({currentPage, posts}) {
+export default function PageIndexer ({currentPage, setCurrentPage, posts}) {
   const MAX_PAGE = Math.floor(posts.length / 8);
   
   function FirstButton () {
