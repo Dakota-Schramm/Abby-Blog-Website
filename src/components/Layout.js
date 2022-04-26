@@ -25,7 +25,9 @@ export default function Layout({
           {children}
         </div>
       </main>
-      <footer className="footer">Built by me!</footer>
+      <footer className="footer">
+        Schramm Solutions, LLC © {new Date().getFullYear()}
+      </footer>
     </>
   );
 }

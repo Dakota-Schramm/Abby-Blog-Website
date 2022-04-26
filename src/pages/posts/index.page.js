@@ -52,10 +52,10 @@ export default function Blog({ posts, title, description, ...props }) {
       <h2 className="posts-section-title">Posts:</h2>
       <main>
         <PostList posts={currentPosts} />
-          <PageIndexer 
-            currentPage={currentPage}
-            posts={posts}
-          />
+        <PageIndexer 
+          currentPage={currentPage}
+          posts={posts}
+        />
       </main>
     </Layout>
   );
