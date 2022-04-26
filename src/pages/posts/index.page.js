@@ -5,6 +5,7 @@ import optimizeTitleForSEO from "../../scripts/RoutingParams";
 
 import Layout from "../../components/Layout";
 import PostList from "../../components/post-list";
+import PageIndexer from "../../components/page-indexer";
 
 /* 
   TODO 
@@ -24,101 +25,6 @@ export default function Blog({ posts, title, description, ...props }) {
   useEffect(() => {
     setCurrentPosts(posts.slice((8 * currentPage), (8 * (currentPage + 1))))
   }, [currentPage])
-
-  function PageIndexer () {
-    function FirstButton () {
-      const INACTIVE = currentPage === 0 
-      let buttonStyle = "blog-index-btn";
-      if (INACTIVE) buttonStyle += " blog-index-not-active" 
-
-      return (
-        <button href={!INACTIVE ? "#" : null} className={buttonStyle} 
-          onClick={() => {
-            setCurrentPage(0)
-            if (!INACTIVE) window.scrollTo(0, 0) 
-          }} 
-        >
-            {`<<`}
-        </button>
-      )
-    }
-
-
-    function LeftButton () {
-      const INACTIVE = currentPage === 0 
-
-      let buttonStyle = "blog-index-btn";
-      if (INACTIVE) buttonStyle += " blog-index-not-active" 
-
-      return (
-        <button href={!INACTIVE ? "#" : null}
-          className={buttonStyle} 
-          onClick={() => {
-            setCurrentPage(currentPage > 0 
-              ? currentPage - 1 
-              : 0
-            )
-            if (!INACTIVE) window.scrollTo(0, 0) 
-          }}
-        >
-          {`<`}
-        </button>
-      )
-    }
-
-    function RightButton () {
-      const INACTIVE = currentPage === MAX_PAGE;
-
-      let buttonStyle = "blog-index-btn";
-      if (INACTIVE) buttonStyle += " blog-index-not-active" 
-
-      return (
-        <button href={!INACTIVE ? "#" : null} className={buttonStyle} 
-          onClick={() => {
-            setCurrentPage(currentPage < MAX_PAGE 
-              ? currentPage + 1 
-              : MAX_PAGE 
-            ) 
-            if (!INACTIVE) window.scrollTo(0, 0) 
-          } 
-            
-          }
-        >
-          {`>`}
-        </button>
-      )
-    }
-
-    function LastButton () {
-      const INACTIVE = currentPage === MAX_PAGE;
-
-      let buttonStyle = "blog-index-btn";
-      if (INACTIVE) buttonStyle += " blog-index-not-active" 
-
-      return (
-        <button href={!INACTIVE ? "#" : null} 
-          className={buttonStyle} 
-          onClick={() => {
-            setCurrentPage(MAX_PAGE)
-            if (!INACTIVE) window.scrollTo(0, 0) 
-          }}
-        >
-          {`>>`}
-        </button>
-      )
-    }
-
-    return (
-      <section className="blog-index"> 
-        <FirstButton />
-        <LeftButton />
-        <div className="blog-index-btn blog-index-num">{currentPage + 1}</div>
-        <RightButton />
-        <LastButton />
-      </section>
-    )
-
-  }
 
 
   return (
@@ -147,7 +53,10 @@ export default function Blog({ posts, title, description, ...props }) {
       <h2 className="posts-section-title">Posts:</h2>
       <main>
         <PostList posts={currentPosts} />
-          <PageIndexer />
+          <PageIndexer 
+            currentPage={currentPage}
+            posts={posts}
+          />
       </main>
     </Layout>
   );
