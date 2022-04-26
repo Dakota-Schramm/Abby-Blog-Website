@@ -10,6 +10,8 @@
 .home-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  text-align: center;
 
   @include media("<=phone") {
     flex-direction: column;
@@ -17,8 +19,8 @@
 }
 
 .headshot {
-  width: 40vw;
-  height: 30vh;
+  width: 20rem;
+  height: 20rem;
   margin: 10px;
   border-radius: 50%;
 }

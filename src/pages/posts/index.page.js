@@ -20,7 +20,6 @@ export default function Blog({ posts, title, description, ...props }) {
   
   const [currentPage, setCurrentPage] = useState(0)
   const [currentPosts, setCurrentPosts] = useState(posts.slice(0, 8));
-  const MAX_PAGE = Math.floor(posts.length / 8);
 
   useEffect(() => {
     setCurrentPosts(posts.slice((8 * currentPage), (8 * (currentPage + 1))))
