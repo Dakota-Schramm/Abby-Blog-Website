@@ -15,6 +15,10 @@ export default function Layout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=block" 
+          rel="stylesheet"
+        />
         {scripts?.map((val, index) => (
           <script key={index} src={val} />
         ))}
