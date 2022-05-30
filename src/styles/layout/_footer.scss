@@ -3,11 +3,14 @@
 // -----------------------------------------------------------------------------
 
 .footer {
-  background-color: black;
+  display: flex;
   position: relative;
-  bottom: 0px;
+  justify-content: center;
+
+  background-color: black;
   color: white;
 
-  display: flex;
-  justify-content: center;
+  bottom: 0px;
+  padding: .5rem;
+
 }

@@ -5,8 +5,9 @@
 /**
  * Set up a decent box model on the root element
  */
-html {
+body {
   box-sizing: border-box;
+  margin: 0;
 }
 
 /**

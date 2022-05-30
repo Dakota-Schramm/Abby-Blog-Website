@@ -23,15 +23,17 @@ export default function Layout({
           <script key={index} src={val} />
         ))}
       </Head>
-      <Header />
-      <main className="layout">
-        <div className={`content ${pageStyle}`}>
-          {children}
-        </div>
-      </main>
-      <footer className="footer">
-        Schramm Solutions, LLC © {new Date().getFullYear()}
-      </footer>
+      <section className="container-pg">
+        <Header />
+        <main className="layout">
+          <div className={`content ${pageStyle}`}>
+            {children}
+          </div>
+        </main>
+        <footer className="footer">
+          Schramm Solutions, LLC © {new Date().getFullYear()}
+        </footer>
+      </section>
     </>
   );
 }
